@@ -11,9 +11,14 @@ class Role(models.Model):
         verbose_name_plural = "Rôles"
 
 class User(AbstractUser):
+    GENRE_CHOICES = (
+        ('M', 'Masculin'),
+        ('F', 'Féminin'),
+    )
     role = models.ForeignKey(Role, on_delete=models.SET_NULL, null=True, blank=True)
     telephone = models.CharField(max_length=20, unique=True)
     date_naissance = models.DateField(null=True, blank=True)
+    genre = models.CharField(max_length=1, choices=GENRE_CHOICES, blank=True, null=True)
     piece_identite_numero = models.CharField(max_length=50, blank=True, null=True)
     piece_identite_document_url = models.URLField(blank=True, null=True)
     photo_profil = models.ImageField(upload_to='profils/', blank=True, null=True)

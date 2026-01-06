@@ -10,7 +10,7 @@ class RoleAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    list_display = ('username', 'first_name', 'last_name', 'telephone', 'role', 'email_verified', 'phone_verified', 'is_staff')
+    list_display = ('username', 'first_name', 'last_name', 'telephone', 'role', 'genre', 'email_verified', 'phone_verified', 'is_staff')
     list_filter = ('role', 'email_verified', 'phone_verified', 'is_staff', 'is_active', 'date_joined')
     search_fields = ('username', 'first_name', 'last_name', 'email', 'telephone')
     readonly_fields = ('created_at', 'updated_at')

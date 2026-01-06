@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Gerant
+from .serializers import GerantSerializer
 
-# Create your views here.
+class GerantViewSet(viewsets.ModelViewSet):
+    queryset = Gerant.objects.all()
+    serializer_class = GerantSerializer
