@@ -91,7 +91,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "sunu_sante_api.wsgi.application"
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',  # pour développement
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
+# Ou avec Redis (plus pro pour production)
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django_redis.cache.RedisCache',
+#         'LOCATION': 'redis://127.0.0.1:6379/1',
+#         'OPTIONS': {
+#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#         }
+#     }
+# }
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
@@ -159,3 +175,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'           # ou ton fournisseur (Sendinblue, Brevo, etc.)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'rokhyatousf@gmail.com'  # ton adresse Gmail
+EMAIL_HOST_PASSWORD = 'rokhyatousf'  # mot de passe d'application (pas le mot de passe normal)
+DEFAULT_FROM_EMAIL = 'SUNU SANTÉ <rokhyatousf@gmail.com>'

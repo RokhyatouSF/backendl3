@@ -20,7 +20,26 @@ class User(AbstractUser):
     date_naissance = models.DateField(null=True, blank=True)
     genre = models.CharField(max_length=1, choices=GENRE_CHOICES, blank=True, null=True)
     piece_identite_numero = models.CharField(max_length=50, blank=True, null=True)
-    piece_identite_document_url = models.URLField(blank=True, null=True)
+    document_piece_identite = models.ImageField(
+        upload_to='pieces_identite/',
+        blank=True,
+        null=True,
+        verbose_name="Pièce d'identité"
+    )
+    id_verified = models.BooleanField(
+        default=False,
+        verbose_name="Identité vérifiée"
+    )
+    id_verification_status = models.CharField(
+        max_length=20,
+        choices=[
+            ('pending', 'En attente'),
+            ('approved', 'Approuvé'),
+            ('rejected', 'Rejeté'),
+            ('manual', 'Vérification manuelle')
+        ],
+        default='pending'
+    )    
     photo_profil = models.ImageField(upload_to='profils/', blank=True, null=True)
     email_verified = models.BooleanField(default=False)
     phone_verified = models.BooleanField(default=False)
