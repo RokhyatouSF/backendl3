@@ -7,10 +7,11 @@ from .views import (
 
 router = DefaultRouter()
 router.register(r'types-centre', TypeCentreViewSet)
-router.register(r'specialites', SpecialiteViewSet)
+router.register(r'specialites', SpecialiteViewSet, basename='specialite')
 router.register(r'centres-sante', CentreSanteViewSet)
 router.register(r'medecins-centres', MedecinCentreViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
 ]
+

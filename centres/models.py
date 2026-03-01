@@ -8,6 +8,8 @@ class TypeCentre(models.Model):
 
 class Specialite(models.Model):
     nom_specialite = models.CharField(max_length=150, unique=True)
+    description_specialite = models.TextField(blank=True, null=True)
+
 
     def __str__(self):
         return self.nom_specialite
